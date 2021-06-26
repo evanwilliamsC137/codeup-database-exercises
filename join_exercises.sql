@@ -41,7 +41,10 @@ WHERE salaries.to_date = '9999-01-01'
 ORDER BY dept_name;
 
 # Bonus Find the names of all current employees, their department name, and their current manager's name .
-SELECT departments.dept_name AS 'Department Name', CONCAT(employees.first_name, ' ', employees.last_name)
+SELECT departments.dept_name AS 'Department Name', CONCAT(employees.first_name, ' ', employees.last_name) AS 'Current employees', employees.first_name AS Manager
 FROM departments
 JOIN dept_emp ON departments.dept_no = dept_emp.dept_no
-WHERE
+JOIN employees ON dept_emp.emp_no = employees.emp_no
+JOIN dept_manager ON dept_manager.emp_no = employees.emp_no
+WHERE dept_emp.to_date = '9999-01-01'
+AND dept_manager.to_date = '9999-01-01';
