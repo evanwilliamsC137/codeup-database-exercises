@@ -101,8 +101,6 @@ SELECT first_name, last_name, content, t.name FROM quotes
    JOIN authors a ON quotes.author_id = a.id;
 
 
-SELECT email FROM users
-JOIN user_ad
 
 
 
